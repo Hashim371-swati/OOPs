@@ -1,0 +1,11 @@
+import java.util.Scanner; 
+public class Personalinfo {
+public static void main(String[] args) {
+String name = "hashim";
+int age = 20;
+String city = "abbottabad";
+System.out.println("Name: " + name); 
+System.out.println("Age: " + age); 
+System.out.println("City: " + city);
+}
+}
