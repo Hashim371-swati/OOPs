@@ -1,0 +1,175 @@
+package array;
+
+import java.lang.reflect.Array;
+
+
+import java.util.Scanner;
+
+public class ArrayOperations {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter the size of the array: ");
+        int size = sc.nextInt();
+        int[] arr = new int[size];
+
+        System.out.println("Enter " + size + " elements:");
+        for (int i = 0; i < size; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        while (true) {
+            System.out.println("\n--- Array Operations Menu ---");
+            System.out.println("1. Insert Element");
+            System.out.println("2. Delete Element");
+            System.out.println("3. Search Element");
+            System.out.println("4. Display Array");
+            System.out.println("5. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    arr = insertElement(arr, sc);
+                    break;
+
+                case 2:
+                    arr = deleteElement(arr, sc);
+                    break;
+
+                case 3:
+                    searchElement(arr, sc);
+                    break;
+
+                case 4:
+                    displayArray(arr);
+                    break;
+
+                case 5:
+                    System.out.println("Exiting program...");
+                    System.exit(0);
+
+                default:
+                    System.out.println("Invalid choice! Try again.");
+            }
+        }
+    }
+
+    public static int[] insertElement(int[] arr, Scanner sc) {
+        System.out.println("\nInsertion Options:");
+        System.out.println("1. Insert at Start");
+        System.out.println("2. Insert at Position");
+        System.out.println("3. Insert at End");
+        System.out.print("Enter your choice: ");
+        int choice = sc.nextInt();
+
+        System.out.print("Enter the value to insert: ");
+        int value = sc.nextInt();
+
+        int[] newArr = new int[arr.length + 1];
+
+        switch (choice) {
+            case 1: 
+                newArr[0] = value;
+                for (int i = 0; i < arr.length; i++) {
+                    newArr[i + 1] = arr[i];
+                }
+                System.out.println("Inserted " + value + " at start.");
+                break;
+
+            case 2:
+                System.out.print("Enter position (1 to " + (arr.length + 1) + "): ");
+                int pos = sc.nextInt();
+
+                if (pos < 1 || pos > arr.length + 1) {
+                    System.out.println("Invalid position!");
+                    return arr;
+                }
+
+                for (int i = 0; i < pos - 1; i++) {
+                    newArr[i] = arr[i];
+                }
+                newArr[pos - 1] = value;
+                for (int i = pos; i <= arr.length; i++) {
+                    newArr[i] = arr[i - 1];
+                }
+                System.out.println("Inserted " + value + " at position " + pos + ".");
+                break;
+
+            case 3: 
+                for (int i = 0; i < arr.length; i++) {
+                    newArr[i] = arr[i];
+                }
+                newArr[arr.length] = value;
+                System.out.println("Inserted " + value + " at end.");
+                break;
+
+            default:
+                System.out.println("Invalid insertion choice!");
+                return arr;
+        }
+
+        return newArr;
+    }
+
+    public static int[] deleteElement(int[] arr, Scanner sc) {
+        if (arr.length == 0) {
+            System.out.println("Array is empty! Nothing to delete.");
+            return arr;
+        }
+
+        System.out.print("Enter position to delete (1 to " + arr.length + "): ");
+        int pos = sc.nextInt();
+
+        if (pos < 1 || pos > arr.length) {
+            System.out.println("Invalid position!");
+            return arr;
+        }
+
+        int[] newArr = new int[arr.length - 1];
+        for (int i = 0, j = 0; i < arr.length; i++) {
+            if (i != pos - 1) {
+                newArr[j++] = arr[i];
+            }
+        }
+
+        System.out.println("Deleted element from position " + pos + ".");
+        return newArr;
+    }
+
+    public static void searchElement(int[] arr, Scanner sc) {
+        if (arr.length == 0) {
+            System.out.println("Array is empty!");
+            return;
+        }
+
+        System.out.print("Enter value to search: ");
+        int value = sc.nextInt();
+        boolean found = false;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == value) {
+                System.out.println(value + " found at position " + (i + 1) + ".");
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            System.out.println(value + " not found in the array.");
+        }
+    }
+
+    public static void displayArray(int[] arr) {
+        if (arr.length == 0) {
+            System.out.println("Array is empty!");
+            return;
+        }
+
+        System.out.print("Current Array: ");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
+}
