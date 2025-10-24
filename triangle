@@ -1,0 +1,49 @@
+package book;
+
+
+public class Triangle {
+    private double height; 
+    private double base;   
+
+    public Triangle(double h, double b) {
+        this.height = h;
+        this.base = b;
+    }
+
+    public void setHeight(double x) {
+        this.height = x;
+    }
+
+    public void setBase(double x) {
+        this.base = x;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public double getBase() {
+        return base;
+    }
+
+    public double getArea() {
+        return 0.5 * base * height;
+    }
+public static void main(String[] args) {
+ 
+        Triangle t1 = new Triangle(10, 20);
+
+        System.out.println("Initial Triangle Details:");
+        System.out.println("Height: " + t1.getHeight());
+        System.out.println("Base: " + t1.getBase());
+        System.out.println("Area: " + t1.getArea());
+
+        t1.setHeight(15);
+        t1.setBase(25);
+
+        System.out.println("\nAfter modifying values:");
+        System.out.println("Height: " + t1.getHeight());
+        System.out.println("Base: " + t1.getBase());
+        System.out.println("Area: " + t1.getArea());
+    }
+}
