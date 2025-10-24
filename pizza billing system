@@ -1,0 +1,74 @@
+import java.util.Scanner;
+public class Pizzabillingsystem {
+
+
+public static void main(String[] args) {
+
+
+
+
+
+
+
+Scanner input = new Scanner(System.in);
+
+
+
+
+int bill = 0; String size; String pepperoni; String cheese;
+
+
+
+System.out.print("Enter pizza size (small/medium/large): "); size = input.nextLine();
+
+
+
+switch (size) { case "small":
+bill = 100; break;
+ 
+case "medium": bill = 200; break;
+case "large": bill = 300; break;
+default:
+
+
+System.out.println("Invalid size entered. Please enter small, medium, or large."); input.close();
+return;
+}
+
+
+
+
+System.out.print("Do you want pepperoni? (yes/no): "); pepperoni = input.nextLine();
+
+
+
+if (pepperoni.equals("yes")) { if (size.equals("small")) {
+bill = bill + 30; // Add 30 for small pizza
+} else {
+bill = bill + 50; // Add 50 for medium/large pizza
+}
+}
+
+
+
+
+System.out.print("Do you want extra cheese? (yes/no): "); cheese = input.nextLine();
+
+
+
+if (cheese.equals("yes")) {
+ 
+bill = bill + 20;
+}
+
+
+
+
+System.out.println("Your final bill is: " + bill + " rupees");
+
+
+
+
+input.close();
+}
+}
