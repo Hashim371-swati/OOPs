@@ -1,0 +1,39 @@
+import java.util.Scanner; public class GradeCalculatar {
+
+public static void main(String[] args) {
+// Create Scanner object to take input from the user Scanner scanner = new Scanner(System.in);
+
+// Ask user to enter marks
+System.out.print("Enter Quiz Marks (out of 15): "); int quizMarks = scanner.nextInt();
+
+System.out.print("Enter Assignment Marks (out of 10): "); int assignmentMarks = scanner.nextInt();
+
+System.out.print("Enter Mid-Term Marks (out of 25): ");
+ 
+int midTermMarks = scanner.nextInt();
+
+
+System.out.print("Enter Final Exam Marks (out of 50): "); int finalMarks = scanner.nextInt();
+
+// Calculate total marks
+int totalMarks = quizMarks + assignmentMarks + midTermMarks + finalMarks;
+
+
+// Calculate average using type casting to get decimal result
+double average = (double) totalMarks / 100 * 100; // Since total is out of 100
+
+
+// Display total and average System.out.println("Total Marks = " + totalMarks); System.out.println("Average = " + average);
+
+// Determine grade using if-else statements if (average >= 85) {
+System.out.println("Grade = A");
+} else if (average >= 70) { System.out.println("Grade = B");
+} else if (average >= 50) { System.out.println("Grade = C");
+} else {
+System.out.println("Grade = Fail");
+}
+
+
+// Close the scanner scanner.close();
+}
+}
